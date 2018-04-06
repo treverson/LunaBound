@@ -15,9 +15,11 @@ require('chai')
     const _manager = accounts[4] // only manager can approve & execute withdrawals
     const _attacker = accounts[5]
     const _withdrawalAccount = accounts[6]
+    const _newOwner = accounts[7]
       
     beforeEach(async () => {
-        stakePension = await StakePension.new([_recovery1, _recovery2, _recovery3], 2, _manager, { from: _owner })
+        const numberRecoverers = 2
+        stakePension = await StakePension.new([_recovery1, _recovery2, _recovery3], numberRecoverers, _manager, { from: _owner })
         await stakePension.contribute({from: _owner, value: web3.toWei(1, 'ether')})
     })
 
@@ -174,6 +176,65 @@ require('chai')
             await stakePension.requestRecurringWithdraw(amount, _withdrawalAccount, period, {from: _owner})
             await stakePension.approveRecurringWithdraw({from: _manager})
             await assertRevert(stakePension.executeRecurringWithdraw(period2, {from: _attacker}))
+        })
+    })
+
+    describe("Propose New Owner", () => {
+        it('should allow any one of the recoverers to propose a new owner address in the event of lost keys', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            const _proposedNewOwner = await stakePension.proposedNewOwner.call(_recovery1)
+            _proposedNewOwner.should.be.equal(_newOwner)
+        })
+
+        it('should not allow an account that is not a recoverer to propose a new owner address in the event of lost keys', async () => {
+            await assertRevert(stakePension.proposeNewOwner(_newOwner, {from: _attacker}))
+        })
+    })
+
+    describe("transfer Ownership", () => {
+        it('should propose transfer of ownership when a recoverer proposes a new owner address', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            const _proposedNewOwner = await stakePension.proposedNewOwner.call(_recovery1)
+            _proposedNewOwner.should.be.equal(_newOwner)
+        })
+
+        it('should not allow an account that is not a recoverer to propose a new owner address in the event of lost keys', async () => {
+            await assertRevert(stakePension.proposeNewOwner(_newOwner, {from: _attacker}))
+        })
+    })
+
+    describe('Transfer Ownership', () => {
+        it('should transfer ownership when numberRecoverers have all proposed a new owner address', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery2})
+            const _proposedNewOwner1 = await stakePension.proposedNewOwner.call(_recovery1)
+            const _proposedNewOwner2 = await stakePension.proposedNewOwner.call(_recovery2)
+            _proposedNewOwner1.should.be.equal(_newOwner) 
+            _proposedNewOwner2.should.be.equal(_newOwner)
+            await stakePension.transferOwner({from: _owner})
+            const _Owner = await stakePension.owner()
+            _Owner.should.be.equal(_newOwner)
+        })
+
+        it('should not transfer ownership when numberRecoverers have proposed different owner address', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            await stakePension.proposeNewOwner(_attacker, {from: _recovery2})
+            const _proposedNewOwner1 = await stakePension.proposedNewOwner.call(_recovery1)
+            const _proposedNewOwner2 = await stakePension.proposedNewOwner.call(_recovery2)
+            _proposedNewOwner1.should.be.equal(_newOwner) 
+            _proposedNewOwner2.should.be.equal(_attacker)
+            await assertRevert(stakePension.transferOwner({from: _owner}))
+            const _Owner = await stakePension.owner()
+            _Owner.should.be.equal(_owner)
+        })
+
+        it('should not transfer ownership when numberRecoverers has not been fulfilled', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            const _proposedNewOwner1 = await stakePension.proposedNewOwner.call(_recovery1)
+            _proposedNewOwner1.should.be.equal(_newOwner) 
+            await assertRevert(stakePension.transferOwner({from: _owner}))
+            const _Owner = await stakePension.owner()
+            _Owner.should.be.equal(_owner)
         })
     })
   })
