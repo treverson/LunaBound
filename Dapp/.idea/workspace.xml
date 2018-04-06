@@ -43,11 +43,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="templates.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="templates.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../client/templates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="69" lean-forward="true" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
+            <state relative-caret-position="288">
+              <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+              <folding>
+                <element signature="n#div#0;n#template#4;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../client/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Display.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../client/Display.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="828">
+              <caret line="1993" column="3" lean-forward="false" selection-start-line="1993" selection-start-column="3" selection-end-line="1993" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -114,8 +136,10 @@
         <option value="$PROJECT_DIR$/../../client/templates.html" />
         <option value="$PROJECT_DIR$/../../client/main.js" />
         <option value="$PROJECT_DIR$/../../client/main.html" />
-        <option value="$PROJECT_DIR$/../client/templates.html" />
         <option value="$PROJECT_DIR$/../client/main.html" />
+        <option value="$PROJECT_DIR$/../client/Display.js" />
+        <option value="$PROJECT_DIR$/../client/templates.html" />
+        <option value="$PROJECT_DIR$/../client/main.js" />
       </list>
     </option>
   </component>
@@ -286,18 +310,18 @@
       <workItem from="1517406175245" duration="3219000" />
       <workItem from="1517411050427" duration="31842000" />
       <workItem from="1523021798485" duration="461000" />
-      <workItem from="1523022972208" duration="6167000" />
+      <workItem from="1523022972208" duration="10594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128626000" />
+    <option name="totallyTimeSpent" value="133053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-3" width="1922" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4113248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41095892" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -354,6 +378,14 @@
     <entry file="file://$PROJECT_DIR$/../../client/templates.html" />
     <entry file="file://$PROJECT_DIR$/../../client/main.js" />
     <entry file="file://$PROJECT_DIR$/../../client/main.html" />
+    <entry file="file://$PROJECT_DIR$/../client/Display.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="1993" column="3" lean-forward="false" selection-start-line="1993" selection-start-column="3" selection-end-line="1993" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../client/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -376,8 +408,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../client/templates.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="69" lean-forward="true" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
+        <state relative-caret-position="288">
+          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+          <folding>
+            <element signature="n#div#0;n#template#4;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../client/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding />
         </state>
       </provider>

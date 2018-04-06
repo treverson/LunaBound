@@ -3,6 +3,42 @@
         <h2 id="create" class="title">Create Pension</h2>
         <h5 class="description">
             Deploy a new pension contract to the Etheruem blockchain.
+            <h4>
+                Pension contract recovery
+                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                        data-target="#example">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+            </h4>
+
+            <div class="row">
+                <div class="col-6">
+                    Number of recoverers <input type="number"
+                                                class="form-control"
+                                                name="numRecoverers"
+                                                id="numRecoverers"
+                                                value="3"
+                                                min="1">
+                </div>
+                <div class="col-6 pull-right">
+                    Recovery Threshold <input type="number"
+                                              id="threshold"
+                                              class="form-control"
+                                              value="2"
+                                              min="1">
+                </div>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Recover Address:</th>
+                </tr>
+                {{#each recoverer in recovers}}
+                    <tr>
+                        <td>An address</td>
+                    </tr>
+                {{/each}}
+            </table>
+            {{recovers}}
         </h5>
 
     </div>
@@ -37,7 +73,8 @@
 
 <!--modals-->
 <template name="modal">
-    <div class="modal fade" id="mvpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!--example modal-->
+    <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -69,6 +106,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 
