@@ -182,6 +182,8 @@ require('chai')
     describe("Propose New Owner", () => {
         it('should allow any one of the recoverers to propose a new owner address in the event of lost keys', async () => {
             await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            // When testing a public getter for a mapping, we need to actually .call() the method
+            // and pass in the correct key for the value we are expecting back.
             const _proposedNewOwner = await stakePension.proposedNewOwner.call(_recovery1)
             _proposedNewOwner.should.be.equal(_newOwner)
         })
@@ -211,6 +213,21 @@ require('chai')
             const _proposedNewOwner2 = await stakePension.proposedNewOwner.call(_recovery2)
             _proposedNewOwner1.should.be.equal(_newOwner) 
             _proposedNewOwner2.should.be.equal(_newOwner)
+            await stakePension.transferOwner({from: _owner})
+            const _Owner = await stakePension.owner()
+            _Owner.should.be.equal(_newOwner)
+        })
+
+        it('should transfer ownership when numberRecoverers have proposed a new owner address, even if one differs', async () => {
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery1})
+            await stakePension.proposeNewOwner(_attacker, {from: _recovery2})
+            await stakePension.proposeNewOwner(_newOwner, {from: _recovery3})
+            const _proposedNewOwner1 = await stakePension.proposedNewOwner.call(_recovery1)
+            const _proposedNewOwner2 = await stakePension.proposedNewOwner.call(_recovery2)
+            const _proposedNewOwner3 = await stakePension.proposedNewOwner.call(_recovery3)
+            _proposedNewOwner1.should.be.equal(_newOwner) 
+            _proposedNewOwner2.should.be.equal(_attacker)
+            _proposedNewOwner3.should.be.equal(_newOwner)
             await stakePension.transferOwner({from: _owner})
             const _Owner = await stakePension.owner()
             _Owner.should.be.equal(_newOwner)
