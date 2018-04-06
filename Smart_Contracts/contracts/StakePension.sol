@@ -58,6 +58,7 @@ contract StakePension {
         require(_amount <= address(this).balance);
         pendingAdhocWithdraw.amount = _amount;
         pendingAdhocWithdraw.recipient = _recipient;
+        emit NewWithdrawRequest(_amount, _recipient);
     }
     
     function requestRecurringWithdraw(uint _amount, address _recipient, uint _period) external isOwner {
@@ -65,22 +66,26 @@ contract StakePension {
         pendingRecurringWithdraw.amount = _amount;
         pendingRecurringWithdraw.recipient = _recipient;
         pendingRecurringWithdraw.period = _period;
+        emit NewRecurringWithdrawRequest(_amount, _recipient, _period);
     }
     
     function approveAdhocWithdraw() external isManager {
         approvedAdhocWithdraw = pendingAdhocWithdraw;
         pendingAdhocWithdraw = adhockWithdraw(0,0x0);
+        emit WithdrawApproved(msg.sender, approvedAdhocWithdraw.amount);
     }
     
     function approveRecurringWithdraw() external isManager {
         approvedRecurringWithdraw = pendingRecurringWithdraw;
         pendingRecurringWithdraw = recurringWithdraw(0,0x0,0,0);
+        emit RecurringWithdrawApproved(msg.sender, approvedRecurringWithdraw.amount, approvedRecurringWithdraw.period);
     }
     
     function executeAdhocWithdraw() external isManager {
         approvedAdhocWithdraw.recipient.transfer(approvedAdhocWithdraw.amount);
         //Adhoc only occurs once, so we need to remove the ability to execute another tx
         approvedAdhocWithdraw = adhockWithdraw(0,0x0); 
+        
     }
 
     function executeRecurringWithdraw(uint _time) external isManager {
@@ -120,4 +125,9 @@ contract StakePension {
 
     event NewContribution(address _contributor, uint _amount, address _pensionContract);
     event PensionDeleted(address _owner, uint _blockNumber, address _pensionContract, uint balancePension);
+    event NewWithdrawRequest(uint _amount, address _recipient);
+    event NewRecurringWithdrawRequest(uint _amount, address _recipient, uint _period);
+    event WithdrawApproved(address _manager, uint _amount);
+    event RecurringWithdrawApproved(address _manager, uint _amount, uint _period);
+
 }
