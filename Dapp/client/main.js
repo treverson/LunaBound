@@ -24,7 +24,6 @@ Template.createPension.events({
     }
 });
 
-
 Template.managePension.events({
     'click .btnSearch': function () {
         let template = Template.instance();
@@ -64,8 +63,6 @@ Template.managePension.events({
     }
 });
 
-
-
 function animateBar() {
     var elem = document.getElementById("myBar");
     var width = 1;
@@ -103,9 +100,8 @@ function createFund() {
 
     let ownerAddress = Session.get("recoveryAddresses");
     let threshold = $('#transferThreshold')[0].value;
-
+    let startingValue = $('#initialAmount')[0].value;
     return new Promise((resolve, error) => {
-
         try {
             let StakeFund = web3.eth.contract(ABI_ARRAY);
             let contractInstance = StakeFund.new(
@@ -114,7 +110,8 @@ function createFund() {
                 {
                     from: Address,
                     data: BYTE_CODE,
-                    gas: "4000000"
+                    gas: "4000000",
+                    value: web3.toWei(startingValue,"ether")
                 },
                 function (e, contract) {
                     sAlert.success('Fund Published to blockchain');
@@ -224,6 +221,7 @@ function getContract(fundAddress) {
 
 Session.set("fundFound", false);
 function getFundFromBlockchain(address, template) {
+    sAlert.info('Fund Found');
     Session.set("fundFound", true);
     let fund = getContract(address);
     fund.threshold(function (err, res) {
@@ -243,6 +241,7 @@ function depositEther(address, value) {
     let fund = getContract(address);
     fund.contribute({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei(value, "ether")}, function (err,res){
         console.log(res)});
+    sAlert.info('Ether Deposited');
 }
 
 function proposeNewOwner(contractAddress, oldAddress,newAddress) {
@@ -250,6 +249,7 @@ let fund = getContract(contractAddress);
     fund.proposeNewAddress(oldAddress,newAddress, function(err,res){
         console.log(res);
     })
+    sAlert.info('New owner proposed');
 }
 
 function changeOwnerAddress(contractAddress) {
@@ -257,6 +257,7 @@ function changeOwnerAddress(contractAddress) {
     fund.changeOwnerAddress(function(err,res){
         console.log(res);
     });
+    sAlert.info('Change owner executed');
 }
 
 function proposeWithdraw(contractAddress, withdrawAddress, value) {
@@ -264,6 +265,7 @@ function proposeWithdraw(contractAddress, withdrawAddress, value) {
     fund.proposeWithdrawFunds(value,withdrawAddress, function(err,res){
         console.log(res);
     });
+    sAlert.info('Withdraw Proposed');
 }
 
 function executeWithdraw(contractAddress) {
@@ -271,6 +273,7 @@ function executeWithdraw(contractAddress) {
     fund.withdraw(function(err,res){
         console.log(res);
     })
+    sAlert.info('Withdraw executed');
 }
 
 function forgetMe(contractAddress){
@@ -278,6 +281,7 @@ function forgetMe(contractAddress){
     fund.forgetMe(function(err,res){
         console.log(res);
     })
+    sAlert.info('Contract deleted');
 }
 
 function getCurrentOwners(contractAddress){

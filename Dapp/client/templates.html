@@ -7,12 +7,11 @@
             <h4>
                 <strong>Recovery Addresses</strong>
                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                        data-target="#example">
+                        data-target="#recoveryAddress">
                     <i class="fa fa-question" aria-hidden="true"></i>
                 </button>
             </h4>
             <br>
-
             <div class="row">
                 <div class="col-lg-8 col-md-6 ">
                                                     <span class="bmd-form-group"><div class="input-group">
@@ -30,7 +29,6 @@
                     <button type="button" class="addAddress btn btn-round btn-block Search btn-primary">Add</button>
                 </div>
             </div>
-
             {{#if recoveryAddresses}}
                 <table class="table">
                     <tr>
@@ -50,11 +48,10 @@
             {{/if}}
 
             <hr class="wow fadeIn">
-
             <h4>
                 <strong>Transfer threshold and starting balance</strong>
                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                        data-target="#example">
+                        data-target="#transfer">
                     <i class="fa fa-question" aria-hidden="true"></i>
                 </button>
             </h4>
@@ -62,12 +59,13 @@
                 <div class="col-6">
                     Recovery and transfer threshold <input type="number" id="transferThreshold" class="form-control"
                                                            name="transferThreshold"
-                                                           value="3"
+                                                           value="1"
                                                            min="1">
                 </div>
                 <div class="col-6 pull-right">
-                    Initial Fund amount <input type="number" id="initialAmount" class="form-control" name="EndingBlock"
-                                               value="5"
+                    Initial Fund amount <input type="number" id="initialAmount" class="form-control"
+                                               name="initialAmount"
+                                               value="0"
                                                min="0">
                 </div>
             </div>
@@ -84,8 +82,6 @@
         <h2 id="manage" class="title">Manage Fund</h2>
         <h5 class="description">
             View a current fund to execute withdraw, recovery and contributions.
-
-
             <div class="row">
                 <div class="col-lg-8 col-md-6 ">
                                                     <span class="bmd-form-group"><div class="input-group">
@@ -103,19 +99,15 @@
                     <button type="button" class="btn btn-round btn-block btn-primary btnSearch">Search</button>
                 </div>
             </div>
-
             {{#if fundFound}}
-
-
                 <h3>
                     <strong>Key Fund Infomation</strong>
                     <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                            data-target="#example">
+                            data-target="#keyFundInfo">
                         <i class="fa fa-question" aria-hidden="true"></i>
                     </button>
                 </h3>
                 <br>
-
                 <table class="table">
                     <tr>
                         <td>Current Fund value</td>
@@ -135,7 +127,6 @@
                     </tr>
                 </table>
                 <hr>
-
                 <h3>
                     <strong>Fund Owners</strong>
                     <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
@@ -152,12 +143,11 @@
                         </tr>
                     {{/each}}
                 </table>
-
                 <hr>
                 <h3>
                     <strong>Fund Progress</strong>
                     <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                            data-target="#example">
+                            data-target="#fundProgress">
                         <i class="fa fa-question" aria-hidden="true"></i>
                     </button>
                 </h3>
@@ -173,52 +163,45 @@
                         <strong>Staking ends:</strong> 2017-05-01
                     </div>
                 </div>
-
-
                 <div id="myProgress">
                     <div id="myBar"></div>
                 </div>
-
                 <hr>
-
-
                 <br>
-
                 <div class="col">
                     <ul class="nav nav-pills nav-pills-icons" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active show" href="#fund" role="tab" data-toggle="tab"
+                            <a class="nav-link active show" href="#fundTab" role="tab" data-toggle="tab"
                                aria-selected="true">
                                 <i class="material-icons">account_balance_wallet</i> Fund
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#withdraw" role="tab" data-toggle="tab" aria-selected="false">
+                            <a class="nav-link" href="#withdrawTab" role="tab" data-toggle="tab" aria-selected="false">
                                 <i class="material-icons">call_made</i> Withdraw
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#recover" role="tab" data-toggle="tab" aria-selected="false">
+                            <a class="nav-link" href="#recoverTab" role="tab" data-toggle="tab" aria-selected="false">
                                 <i class="material-icons">lock_open</i> Recover
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#delete" role="tab" data-toggle="tab" aria-selected="false">
+                            <a class="nav-link" href="#deleteTab" role="tab" data-toggle="tab" aria-selected="false">
                                 <i class="material-icons">delete</i> Delete
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content tab-space">
                         <!--FUND-->
-                        <div class="tab-pane active show" id="fund">
+                        <div class="tab-pane active show" id="fundTab">
                             <h3><strong>Deposit money into an existing fund</strong>
                                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                                        data-target="#example">
+                                        data-target="#fund">
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                 </button>
                             </h3>
                             <br>
-
                             <div class="text-justify">
                                 Specify a deposit address and amount. This enables an owner to add more money into an
                                 existing fund. Anyone can contribute to the fund.
@@ -242,14 +225,14 @@
                                 <button type="button" class=" btn btn-lg hvr-growfast btn-primary btnDeposit">Deposit
                                 </button>
                             </div>
-
                         </div>
 
                         <!--WITHDRAW-->
-                        <div class="tab-pane" id="withdraw">
+                        <div class="tab-pane" id="withdrawTab">
                             <h3><strong>Withdraw from fund</strong>
-                                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                                        data-target="#example">
+                                <button class="pull-right btn btn-just-icon btn-border btn-tumblr"
+                                        data-toggle="withdraw"
+                                        data-target="#withdraw">
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                 </button>
                             </h3>
@@ -307,27 +290,22 @@
                                     Withdraw
                                 </button>
                             </div>
-
                         </div>
 
                         <!--RECOVER-->
-                        <div class="tab-pane" id="recover">
+                        <div class="tab-pane" id="recoverTab">
                             <h3><strong>Recover access to a lost fund</strong>
                                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                                        data-target="#example">
+                                        data-target="#recoverFund">
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                 </button>
                             </h3>
                             <br>
-
                             <div class="text-justify">
-                                This enables you to swap one of the multisig addresses with a new address. Note that the
-                                old
+                                This enables you to swap one of the multisig addresses with a new address. Note that the old
                                 address must be a current multisig member and the new address must be valid.
                             </div>
                             <div class="row">
-
-
                                 <div class="col-6">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -335,17 +313,14 @@
                                             <i class="material-icons">account_box</i>
                                         </span>
                                         </div>
-
                                         <select class="form-control oldAddress">
                                             <option selected="selected">Current Owner Address</option>
                                             {{#each owner in currentOwners}}
                                                 <option value="{{owner}}">{{owner}}</option>
                                             {{/each}}
                                         </select>
-
                                     </div>
                                 </div>
-
 
                                 <div class="col-6">
                                     <div class="input-group">
@@ -378,77 +353,205 @@
                                     Transfer
                                 </button>
                             </div>
-
                         </div>
                         <!--Delete-->
-                        <div class="tab-pane active show" id="delete">
+                        <div class="tab-pane active show" id="deleteTab">
                             <h3><strong>Delete Staking contract</strong>
                                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
-                                        data-target="#example">
+                                        data-target="#delete">
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                 </button>
                             </h3>
                             <br>
-
                             <div class="text-justify">
-                                Selfdestruct pension fund contract, removing it from the blockchain. Note that for this to execute, the fund must first be empty of all funds and only fund owners can call the function.
+                                Selfdestruct pension fund contract, removing it from the blockchain. Note that for this
+                                to execute, the fund must first be empty of all funds and only fund owners can call the
+                                function.
                             </div>
                             <div class="text-center">
                                 <button type="button" class=" btn btn-lg hvr-growfast btn-primary btnDelete">Delete
                                 </button>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
-
-
-
-
             {{/if}}
-
         </h5>
     </div>
 </template>
 
 <!--modals-->
 <template name="modal">
-    <!--example modal-->
-    <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!--Recovery Modal-->
+    <div class="modal fade" id="recoveryAddress" tabindex="-1" role="dialog" aria-labelledby="recoveryAddress"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="my-auto">Modal sample</h2>
+                    <h2 class="my-auto">Recovery Address</h2>
                 </div>
-                <div class="modal-body"> Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                    the
-                    Semantics, a large language ocean. A small river named Duden flows by their place and supplies it
-                    with
-                    the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                    into
-                    your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost
-                    unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to
-                    leave for the far World of Grammar.
-                </div>
-                <div class="modal-footer">
-                    <div class="left-side">
-                        <button type="button" class="btn btn-primary btn-link" data-dismiss="modal">a button
-                        </button>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="right-side">
-                        <button type="button" class="btn btn-default btn-link" data-dismiss="modal">another button
-                        </button>
-                    </div>
+                <div class="modal-body">
+                    A prominent issue in the cryptocurrency and blockchain space is that of <strong>key
+                    management</strong>. If someone loses their private key, they lose access to their wallet and cannot
+                    use that account to interact with smart contracts. Providing additional recovery addresses allows
+                    for recoverability of the fund if the owner loses access to their private key. In this scenario, the
+                    recoverers can add a replacement address, which allows the original user to regain control and
+                    access the fund. The recovery addresses are also required to approve withdrawal from the fund.
                 </div>
             </div>
         </div>
     </div>
 
+    <!--Recovery and Transfer threshold Modal-->
+    <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="recoveryAddress"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>Recovery Threshold</h2>
+                    The recovery threshold is the number of desired co-signers that need to approve the change of
+                    ownership or a withdrawal from the fund.
+
+                    <h2>Initial Fund amount</h2>
+                    The initial fund amount is how much the StakeFund contract is initialized with. The ether is
+                    transferred from creators wallet to the contract when it is created.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Recovery Modal-->
+    <div class="modal fade" id="keyFundInfo" tabindex="-1" role="dialog" aria-labelledby="keyFundInfo"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Key Fund Information</h2>
+                </div>
+                <div class="modal-body">
+
+                    In order to track an existing Stake Fund, enter the address of the deployed smart contract
+                    associated with the Stake Fund.
+                    <br>
+                    <br>
+
+                    <strong>Current Fund Value:</strong> The current value of the staking fund in Ether
+                    Number of Owner Addresses: The number of registered addresses associated with the Fund
+
+                    <br>
+                    <br>
+                    <strong>Transfer threshold:</strong> The number of accounts that are required to approve a change in
+                    the recovery accounts or a withdrawal
+
+                    <br>
+                    <br>
+                    <strong>Currently Staking:</strong> Shows the current staking status. If active, the fund will
+                    continue to grow in ether
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--owners Modal-->
+    <div class="modal fade" id="ownersKeys" tabindex="-1" role="dialog" aria-labelledby="OwnersKeys"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Owners Keys</h2>
+                </div>
+                <div class="modal-body">
+                    Fund owners keys represent keys that have access to preform privileged operations on the fund, such
+                    as request transfer or change of owner.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--fund progress Modal-->
+    <div class="modal fade" id="fundProgress" tabindex="-1" role="dialog" aria-labelledby="fundProgress"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Fund Progress</h2>
+                </div>
+                <div class="modal-body">
+                    Staking occurs over a period of time, the bar graph illustrates which stage of the staking process
+                    the fund is in. This will be completed in the near future.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Recovery Modal-->
+    <div class="modal fade" id="fund" tabindex="-1" role="dialog" aria-labelledby="fund"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Fund</h2>
+                </div>
+                <div class="modal-body">
+                    The user is able to enter the address of the StakeFund contract and contribute an amount in Ether
+                    towards growing the fund. Anyone can contribute to a fund, not necessarily just the owners.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--withdraw Modal-->
+    <div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="withdraw"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Withdraw</h2>
+                </div>
+                <div class="modal-body">
+                    The withdrawal of Ether is a two step process involving the proposal of a withdrawal and the
+                    execution of that withdrawal. Owners of the account are required to propose new withdrawals and
+                    specify the amount and the address to withdraw to. The withdrawal will only be executed if the
+                    threshold of owners required to sign off on a transfer have proposed the same withdrawal.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--withdraw Modal-->
+    <div class="modal fade" id="recoverFund" tabindex="-1" role="dialog" aria-labelledby="recoverFund"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Recover</h2>
+                </div>
+                <div class="modal-body">
+                    The withdrawal of Ether is a two step process involving the proposal of a withdrawal and the
+                    execution of that withdrawal. Owners of the account are required to propose new withdrawals and
+                    specify the amount and the address to withdraw to. The withdrawal will only be executed if the
+                    threshold of owners required to sign off on a transfer have proposed the same withdrawal.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--withdraw Modal-->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="my-auto">Delete</h2>
+                </div>
+                <div class="modal-body">
+                    Enables fund members to remove a fund from the blockchain. The actual contract is not deleted but
+                    all underlying variables are reset, making it as anonymous as possible. Can only be called when the
+                    fund is empty.
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 

@@ -20,111 +20,87 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="lib.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lib/lib.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Display.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../client/Display.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../client/main.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="templates.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../client/templates.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="607">
-                  <caret line="149" column="32" lean-forward="false" selection-start-line="149" selection-start-column="32" selection-end-line="149" selection-end-column="32" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../client/main.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="588">
-                  <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="byteCode.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lib/byteCode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="abiArray.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lib/abiArray.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="828">
-                  <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="templates.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../client/templates.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="295">
-                  <caret line="393" column="217" lean-forward="false" selection-start-line="393" selection-start-column="217" selection-end-line="393" selection-end-column="217" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="lib.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/lib.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Display.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../client/Display.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../client/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1800">
+              <caret line="30" column="56" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="templates.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../client/templates.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../client/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1119">
+              <caret line="223" column="27" lean-forward="false" selection-start-line="223" selection-start-column="27" selection-end-line="223" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="byteCode.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/byteCode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abiArray.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/abiArray.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="828">
+              <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>candidatesModal</find>
-      <find>hr</find>
-      <find>&lt;hr</find>
-      <find>create a new elec</find>
-      <find>contr</find>
-      <find>contrib</find>
-      <find>contri</find>
-      <find>&lt;!</find>
       <find>select</find>
       <find>{{&gt; mo</find>
       <find>assets/img</find>
@@ -142,11 +118,19 @@
       <find>XX</find>
       <find>fundAddress</find>
       <find>tow</find>
-      <find>manage fund</find>
       <find>getCurrentOwners</find>
       <find>currentOwners</find>
       <find>Propose</find>
       <find>Propose</find>
+      <find>createfund</find>
+      <find>web3.eth.tow</find>
+      <find>web3.eth.to</find>
+      <find>manage fund</find>
+      <find>recoveryaDD</find>
+      <find>initial</find>
+      <find>id=&quot;recover</find>
+      <find>wei</find>
+      <find>fund progr</find>
     </findStrings>
     <replaceStrings>
       <replace>Staking Solutions</replace>
@@ -186,8 +170,9 @@
         <option value="$PROJECT_DIR$/../lib/config.js" />
         <option value="$PROJECT_DIR$/../lib/byteCode.js" />
         <option value="$PROJECT_DIR$/../lib/abiArray.js" />
-        <option value="$PROJECT_DIR$/../client/main.js" />
         <option value="$PROJECT_DIR$/../client/templates.html" />
+        <option value="$PROJECT_DIR$/../client/main.html" />
+        <option value="$PROJECT_DIR$/../client/main.js" />
       </list>
     </option>
   </component>
@@ -397,12 +382,12 @@
       <workItem from="1517411050427" duration="31842000" />
       <workItem from="1523021798485" duration="461000" />
       <workItem from="1523022972208" duration="27939000" />
-      <workItem from="1523096308584" duration="13156000" />
+      <workItem from="1523096308584" duration="18306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163554000" />
+    <option name="totallyTimeSpent" value="168704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-3" width="1922" height="1054" extended-state="6" />
@@ -471,28 +456,10 @@
     <entry file="file://$PROJECT_DIR$/../../client/main.html" />
     <entry file="file://$PROJECT_DIR$/../../client/templates.html" />
     <entry file="file://$PROJECT_DIR$/../../client/main.js" />
-    <entry file="file://$PROJECT_DIR$/../client/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../client/Display.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../lib/lib.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -521,21 +488,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../client/main.js">
+    <entry file="file://$PROJECT_DIR$/../client/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="-1800">
+          <caret line="30" column="56" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../client/Display.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../client/templates.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="393" column="217" lean-forward="false" selection-start-line="393" selection-start-column="217" selection-end-line="393" selection-end-column="217" />
+        <state relative-caret-position="312">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../client/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1119">
+          <caret line="223" column="27" lean-forward="false" selection-start-line="223" selection-start-column="27" selection-end-line="223" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
