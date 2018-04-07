@@ -48,22 +48,28 @@ contract StakeFund {
     }
     
     function changeOwnerAddress() external isOwner {
-        for(uint i = 0; i < ownerAddresses.length - 1; i++) {
-            uint foundCount = 0;
-            
-            for(uint j = i; j < ownerAddresses.length; j++) {
-                if(proposedNewAddress[ownerAddresses[i]].oldAddress == proposedNewAddress[ownerAddresses[j]].oldAddress &&
-                proposedNewAddress[ownerAddresses[i]].newAddress == proposedNewAddress[ownerAddresses[j]].newAddress) {
-                    foundCount++;
-                    if(foundCount >= threshold) {
-                        // if past the threshold, we change one of the owners to a new address
-                        for (uint k = 0 ; k < ownerAddresses.length; k ++) {
-                            if(ownerAddresses[k] == proposedNewAddress[ownerAddresses[i]].oldAddress) {
-                                ownerAddresses[k] = proposedNewAddress[ownerAddresses[i]].newAddress;
-                                emit OwnerChanged(proposedNewAddress[ownerAddresses[i]].oldAddress, proposedNewAddress[ownerAddresses[i]].newAddress, msg.sender);
+        if(numberOfOwners == 1) {
+            ownerAddresses[k] = proposedNewAddress[ownerAddresses[i]].newAddress;
+            emit OwnerChanged(proposedNewAddress[ownerAddresses[i]].oldAddress, proposedNewAddress[ownerAddresses[i]].newAddress, msg.sender);
+        }
+        else{
+            for(uint i = 0; i < ownerAddresses.length - 1; i++) {
+                uint foundCount = 0;
+                
+                for(uint j = i; j < ownerAddresses.length; j++) {
+                    if(proposedNewAddress[ownerAddresses[i]].oldAddress == proposedNewAddress[ownerAddresses[j]].oldAddress &&
+                    proposedNewAddress[ownerAddresses[i]].newAddress == proposedNewAddress[ownerAddresses[j]].newAddress) {
+                        foundCount++;
+                        if(foundCount >= threshold) {
+                            // if past the threshold, we change one of the owners to a new address
+                            for (uint k = 0 ; k < ownerAddresses.length; k ++) {
+                                if(ownerAddresses[k] == proposedNewAddress[ownerAddresses[i]].oldAddress) {
+                                    ownerAddresses[k] = proposedNewAddress[ownerAddresses[i]].newAddress;
+                                    emit OwnerChanged(proposedNewAddress[ownerAddresses[i]].oldAddress, proposedNewAddress[ownerAddresses[i]].newAddress, msg.sender);
+                                }
                             }
-                        }
-                    }    
+                        }    
+                    }
                 }
             }
         }
@@ -77,18 +83,25 @@ contract StakeFund {
     }
     
     function withdraw() external isOwner {
-        for(uint i = 0; i < ownerAddresses.length - 1; i++) {
-            uint foundCount = 0;
-            for(uint j = i; j < ownerAddresses.length; j++) {
-                if(proposedNewWithdraw[ownerAddresses[i]].amount == proposedNewWithdraw[ownerAddresses[j]].amount &&
-                proposedNewWithdraw[ownerAddresses[i]].recipient == proposedNewWithdraw[ownerAddresses[j]].recipient) {
-                    foundCount++;
-                    if(foundCount >= threshold) {
-                        proposedNewWithdraw[ownerAddresses[i]].recipient.transfer(proposedNewWithdraw[ownerAddresses[i]].amount);
-                        emit Transfer(proposedNewWithdraw[ownerAddresses[i]].amount, proposedNewWithdraw[ownerAddresses[i]].recipient, msg.sender);
-                        proposedNewWithdraw[ownerAddresses[i]] = newWithdraw(0, 0x0);
-                    }
-                }                
+        if(numberOfOwners == 1) {
+            proposedNewWithdraw[ownerAddresses[0]].recipient.transfer(proposedNewWithdraw[ownerAddresses[0]].amount);
+            emit Transfer(proposedNewWithdraw[ownerAddresses[0]].amount, proposedNewWithdraw[ownerAddresses[0]].recipient, msg.sender);
+            proposedNewWithdraw[ownerAddresses[0]] = newWithdraw(0, 0x0);
+        }
+        else{
+            for(uint i = 0; i < ownerAddresses.length - 1; i++) {
+                uint foundCount = 0;
+                for(uint j = i; j < ownerAddresses.length; j++) {
+                    if(proposedNewWithdraw[ownerAddresses[i]].amount == proposedNewWithdraw[ownerAddresses[j]].amount &&
+                    proposedNewWithdraw[ownerAddresses[i]].recipient == proposedNewWithdraw[ownerAddresses[j]].recipient) {
+                        foundCount++;
+                        if(foundCount >= threshold) {
+                            proposedNewWithdraw[ownerAddresses[i]].recipient.transfer(proposedNewWithdraw[ownerAddresses[i]].amount);
+                            emit Transfer(proposedNewWithdraw[ownerAddresses[i]].amount, proposedNewWithdraw[ownerAddresses[i]].recipient, msg.sender);
+                            proposedNewWithdraw[ownerAddresses[i]] = newWithdraw(0, 0x0);
+                        }
+                    }                
+                }
             }
         }
     }
@@ -105,3 +118,4 @@ contract StakeFund {
         emit FundDeleted(msg.sender, address(this), block.number);
     }
 }
+
