@@ -1,6 +1,10 @@
 pragma solidity ^0.4.21;
+
+import "./SafeMath.sol";
+
 contract StakeSimulator
 {
+    using SafeMath for uint256;
     uint256 public scalingFactor = 10;
     address[] public recipients;
     
@@ -42,12 +46,12 @@ contract StakeSimulator
 
     function deposit () payable external {}
     
-    
     function drop() public payable
     {
+        uint256 percentage = 100;
         for (uint i = 0; i < recipients.length; i++)
         {
-            uint256 transferAmmount = uint256((recipients[i].balance*scalingFactor)/1000);
+            uint256 transferAmmount = uint256((recipients[i].balance*scalingFactor).div(percentage));
             recipients[i].transfer(transferAmmount);
         }
     }
