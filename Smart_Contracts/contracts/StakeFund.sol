@@ -1,7 +1,8 @@
-pragma solidity ^0.4.21;
+[200~pragma solidity ^0.4.21;
 
 contract StakeFund {
     address[] public ownerAddresses;
+    uint256 public numberOfOwners;
     uint16 public threshold;
     mapping(address => replacementAddress) public proposedNewAddress;
     mapping(address => newWithdraw) public proposedNewWithdraw;
@@ -37,6 +38,7 @@ contract StakeFund {
     function StakeFund(address[] _ownerAddresses, uint16 _threshold) payable public {
         ownerAddresses = _ownerAddresses;
         threshold = _threshold;
+        numberOfOwners = ownerAddresses.length;
     }
     
     function proposeNewAddress(address _oldAddress, address _newAddress) external isOwner {
@@ -103,3 +105,4 @@ contract StakeFund {
         emit FundDeleted(msg.sender, address(this), block.number);
     }
 }
+
