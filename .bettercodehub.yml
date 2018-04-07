@@ -1,3 +1,4 @@
 exclude:
-- /Dapp/lib/
+- /Dapp/lib/abiArray\.js
+- /Dapp/lib/byteCode\.js
 - /Dapp/client/Display\.js
