@@ -1,0 +1,3 @@
+exclude:
+- /Dapp/lib/
+- /Dapp/client/Display\.js
