@@ -1,8 +1,8 @@
 pragma solidity ^0.4.21;
 contract StakeSimulator
 {
-    uint256 scalingFactor = 10;
-    address[] recipients;
+    uint256 public scalingFactor = 10;
+    address[] public recipients;
     
     function StakeSimulator() public payable{}
     
@@ -39,6 +39,9 @@ contract StakeSimulator
     {
         scalingFactor = _factor;
     }
+
+    function deposit () payable external {}
+    
     
     function drop() public payable
     {
