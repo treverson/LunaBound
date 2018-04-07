@@ -1,8 +1,7 @@
-
-
 // javascript for graphical systems, such as scroll to top and particles JS. will move this to other js file later on
 // same as including js as seperate files, just all in one file. Taken directly from MIT projects, like particl JS
 Meteor.startup(function () {
+
     sAlert.config({
         effect: 'slide',
         position: 'bottom-right',
