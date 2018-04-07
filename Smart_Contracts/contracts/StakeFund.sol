@@ -45,7 +45,7 @@ contract StakeFund {
         emit NewAddressProposed(_oldAddress, _newAddress, msg.sender);
     }
     
-    function changeOwnerAddress() external isOwner returns (bool) {
+    function changeOwnerAddress() external isOwner {
         for(uint i = 0; i < ownerAddresses.length - 1; i++) {
             uint foundCount = 0;
             
@@ -59,23 +59,22 @@ contract StakeFund {
                             if(ownerAddresses[k] == proposedNewAddress[ownerAddresses[i]].oldAddress) {
                                 ownerAddresses[k] = proposedNewAddress[ownerAddresses[i]].newAddress;
                                 emit OwnerChanged(proposedNewAddress[ownerAddresses[i]].oldAddress, proposedNewAddress[ownerAddresses[i]].newAddress, msg.sender);
-                                return true;
                             }
                         }
                     }    
                 }
             }
         }
-        return false;
     }
     
     function proposeWithdrawFunds(uint _amount, address _recipient) external isOwner {
+        require(_amount <= address(this).balance);
         proposedNewWithdraw[msg.sender].amount = _amount;
         proposedNewWithdraw[msg.sender].recipient = _recipient;
         emit WithdrawalProposed(_amount, _recipient, msg.sender);
     }
     
-    function withdraw() external isOwner returns(bool) {
+    function withdraw() external isOwner {
         for(uint i = 0; i < ownerAddresses.length - 1; i++) {
             uint foundCount = 0;
             for(uint j = i; j < ownerAddresses.length; j++) {
@@ -85,12 +84,11 @@ contract StakeFund {
                     if(foundCount >= threshold) {
                         proposedNewWithdraw[ownerAddresses[i]].recipient.transfer(proposedNewWithdraw[ownerAddresses[i]].amount);
                         emit Transfer(proposedNewWithdraw[ownerAddresses[i]].amount, proposedNewWithdraw[ownerAddresses[i]].recipient, msg.sender);
-                        return true;
+                        proposedNewWithdraw[ownerAddresses[i]] = newWithdraw(0, 0x0);
                     }
                 }                
             }
         }
-        return false;
     }
 
     function contribute() external payable {
