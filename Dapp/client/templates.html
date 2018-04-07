@@ -2,7 +2,8 @@
     <div class="text-center">
         <h2 id="create" class="title">Create Staking Contract</h2>
         <h5 class="description">
-            Deploy a new fund contract to the Etheruem blockchain.
+            Deploy a new fund contract to the Etheruem blockchain. This contract will start actively staking right after
+            deployment.
             <h4>
                 <strong>Recovery Addresses</strong>
                 <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
@@ -30,22 +31,23 @@
                 </div>
             </div>
 
-
-            <table class="table">
-                <tr>
-                    <th>Recover Address:</th>
-                    <th></th>
-                </tr>
-                {{#each recoverer in recoveryAddresses}}
+            {{#if recoveryAddresses}}
+                <table class="table">
                     <tr>
-                        <td>{{recoverer}}</td>
-                        <button type="button" name="{{recoverer}}" id="{{recoverer}}"
-                                class=" fa-pull-right pull-right btn btn-primary btn-outline-danger btn-just-icon removeAddress">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
+                        <th>Recover Address:</th>
+                        <th></th>
                     </tr>
-                {{/each}}
-            </table>
+                    {{#each recoverer in recoveryAddresses}}
+                        <tr>
+                            <td>{{recoverer}}</td>
+                            <button type="button" name="{{recoverer}}" id="{{recoverer}}"
+                                    class=" fa-pull-right pull-right btn btn-primary btn-outline-danger btn-just-icon removeAddress">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </tr>
+                    {{/each}}
+                </table>
+            {{/if}}
 
             <hr class="wow fadeIn">
 
