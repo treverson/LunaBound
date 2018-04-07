@@ -17,9 +17,10 @@ web3 = Web3(HTTPProvider('http://localhost:8545'))
 
 
 class RepeatedTimer(object):
-    def __init__(self, interval, function, *args, **kwargs):
+    def __init__(self, interval, contract, *args, **kwargs):
         self._timer     = None
-        self.function   = function
+        #self.function   = function
+        self.contract   = contract
         self.interval   = interval
         self.args       = args
         self.kwargs     = kwargs
@@ -28,7 +29,8 @@ class RepeatedTimer(object):
     def _run(self):
         self.is_running = False
         self.start()
-        self.function(*self.args, **self.kwargs)
+        drop(self.contract)
+        # self.function(*self.args, **self.kwargs)
     def start(self):
         if not self.is_running:
             self._timer = Timer(self.interval, self._run)
@@ -92,20 +94,22 @@ command_completer = WordCompleter(
      'auto: autoconfigure some accounts with staking'])
 
 history = InMemoryHistory()
+global stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer
 
 # Drop object to be passed to the timer.
 def drop(contract):
-	print(contract.drop(transact={'from':web3.eth.coinbase}))
+	contract.drop(transact={'from':web3.eth.coinbase})
 
 # A hacky auto-configuration script
-def auto_configure(numUsers=1, period=10):
+def auto_configure(numUsers=1, period=10, eth_transfer=98):
 	(stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address) = deployStakeSimulator()
 	for i in range(numUsers):
 		stakeSimulator_contract.addRecipiant(web3.eth.accounts[i], transact={'from':web3.eth.coinbase})
-		stakeSimulator_contract.deposit(transact={'from':web3.eth.accounts[i], 'value': web3.toWei('98','ether')})
-	dropTimer = RepeatedTimer(period,drop(stakeSimulator_contract))
+		stakeSimulator_contract.deposit(transact={'from':web3.eth.accounts[i], 'value': web3.toWei(str(eth_transfer),'ether')})
+	dropTimer = RepeatedTimer(period, stakeSimulator_contract)
+	return (stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer)
 
-global stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer
+
 
 while 1:
     userInput = prompt('> ',
@@ -113,37 +117,37 @@ while 1:
                        history=history,
                        auto_suggest=AutoSuggestFromHistory()
                        )
-    if 'deploy' in userInput:
+    if 'deploy:' in userInput:
         (stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address) = deployStakeSimulator()
 
-    if 'print' in  userInput:
+    if 'print:' in  userInput:
         if stakeSimulator_address == '':
             print('No contract deployed.')
         else:
             print(stakeSimulator_address)
 
-    if 'add' in userInput:
+    if 'add:' in userInput:
         address = userInput[37:]
         stakeSimulator_contract.addRecipiant(address, transact={'from':web3.eth.coinbase})
 
-    if 'list' in userInput:
+    if 'list:' in userInput:
         print(stakeSimulator_contract.getRecipients())
 
-    if 'drop' in userInput:
+    if 'drop:' in userInput:
         drop(stakeSimulator_contract)
 
-    if 'period' in userInput:
+    if 'period:' in userInput:
     	period = userInput[38:]
-    	dropTimer = RepeatedTimer(period, drop(), stakeSimulator_contract)
+    	dropTimer = RepeatedTimer(period, drop(), args=(stakeSimulator_contract))
 
-    if 'stop' in userInput:
+    if 'stop:' in userInput:
     	dropTimer.stop()
 
-    if 'start' in userInput:
+    if 'start:' in userInput:
     	dropTimer.start()
 
-    if 'auto' in userInput:
-    	auto_configure(5)
+    if 'auto:' in userInput:
+    	(stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer) = auto_configure(5)
 
 
 
