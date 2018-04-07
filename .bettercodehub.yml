@@ -1,5 +1,6 @@
 exclude:
 - /Dapp/lib/abiArray\.js
 - /Dapp/lib/byteCode\.js
+- /Dapp/client/main\.js
 - /Dapp/client/Display\.js
 - /StakeFunds_Site/.* 
