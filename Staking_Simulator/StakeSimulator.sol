@@ -40,9 +40,7 @@ contract StakeSimulator
         scalingFactor = _factor;
     }
 
-    function deposit () payable external {
-        
-    }
+    function deposit () payable external {}
     
     
     function drop() public payable
