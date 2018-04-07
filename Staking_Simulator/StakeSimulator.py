@@ -1,3 +1,7 @@
+import sys
+import random
+from threading import Timer
+
 from web3 import Web3, HTTPProvider
 from solc import compile_source, compile_files
 from web3.contract import ConciseContract
@@ -6,12 +10,6 @@ from prompt_toolkit import prompt
 from prompt_toolkit.contrib.completers import WordCompleter
 from prompt_toolkit.history import InMemoryHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-
-
-
-import sys
-# import sha3
-from threading import Timer
 
 web3 = Web3(HTTPProvider('http://localhost:8545'))
 
@@ -101,11 +99,11 @@ def drop(contract):
 	contract.drop(transact={'from':web3.eth.coinbase})
 
 # A hacky auto-configuration script
-def auto_configure(numUsers=1, period=10, eth_transfer=98):
+def auto_configure(numUsers=1, period=15):
 	(stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address) = deployStakeSimulator()
 	for i in range(numUsers):
 		stakeSimulator_contract.addRecipiant(web3.eth.accounts[i], transact={'from':web3.eth.coinbase})
-		stakeSimulator_contract.deposit(transact={'from':web3.eth.accounts[i], 'value': web3.toWei(str(eth_transfer),'ether')})
+		stakeSimulator_contract.deposit(transact={'from':web3.eth.accounts[i], 'value': web3.toWei(str(random.randrange(85,98)),'ether')})
 	dropTimer = RepeatedTimer(period, stakeSimulator_contract)
 	return (stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer)
 
@@ -129,6 +127,10 @@ while 1:
     if 'add:' in userInput:
         address = userInput[37:]
         stakeSimulator_contract.addRecipiant(address, transact={'from':web3.eth.coinbase})
+
+    if 'remove:' in userInput:
+        address = userInput[39:]
+        stakeSimulator_contract.removeRecipiant(address, transact={'from':web3.eth.coinbase})
 
     if 'list:' in userInput:
         print(stakeSimulator_contract.getRecipients())
