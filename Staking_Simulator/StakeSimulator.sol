@@ -6,9 +6,9 @@ contract StakeSimulator
     
     function StakeSimulator() public payable{}
     
-    function isStaking(address _address) public returns(bool)
+    function isStaking(address _address) public view returns(bool)
     {
-        for(uint i=0;i<recipients.length;i++)
+        for(uint i = 0; i < recipients.length; i++)
         {
             if (recipients[i]==_address)
             {
@@ -18,14 +18,14 @@ contract StakeSimulator
         return false;
     }
     
-    function addRecipiant(address _address) public
+    function addRecipient(address _address) public
     {
         recipients.push(_address);
     }
     
-    function removeRecipiant(address _address) public
+    function removeRecipient(address _address) public
     {
-        for(uint i=0;i<recipients.length;i++)
+        for(uint i = 0;i < recipients.length; i++)
         {
             if (recipients[i]==_address)
             {
@@ -45,26 +45,10 @@ contract StakeSimulator
     
     function drop() public payable
     {
-        for (uint i=0; i<recipients.length;i++)
+        for (uint i = 0; i < recipients.length; i++)
         {
             uint256 transferAmmount = uint256((recipients[i].balance*scalingFactor)/1000);
             recipients[i].transfer(transferAmmount);
         }
-    }
-    
-    function getBallance() public returns (uint256)
-    {
-        return this.balance;
-    }
-    
-    
-    function getRecipients() public returns(address[])
-    {
-        return recipients;
-    }
-    
-    function getScalingFactor() public returns(uint256)
-    {
-        return scalingFactor;
     }
 }
