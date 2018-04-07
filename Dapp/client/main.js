@@ -31,11 +31,36 @@ Template.managePension.events({
         let address = $('.fundAddress')[0].value;
         getFundFromBlockchain(address, template);
         setTimeout(animateBar, 500);
+        getCurrentOwners(address);
     },
     'click .btnDeposit': function () {
         let address = $('.fundAddress')[0].value;
         let amount = $('.fundingAmount')[0].value;
         depositEther(address,amount);
+    },
+    'click .proposeWithdraw': function () {
+        let address = $('.fundAddress')[0].value;
+        let withdrawAddress = $('.transferAddress')[0].value;
+        let withdrawValue = $('.transferAmount')[0].value;
+        proposeWithdraw(address,withdrawAddress,web3.toWei(withdrawValue, "ether"));
+    },
+    'click .executeWithdraw': function () {
+        let address = $('.fundAddress')[0].value;
+        executeWithdraw(address);
+    },
+    'click .proposeTransfer': function(){
+        let address = $('.fundAddress')[0].value;
+        let oldAddress = $('.oldAddress')[0].value;
+        let newAddress = $(".newAddress")[0].value;
+        proposeNewOwner(address,oldAddress,newAddress);
+    },
+    'click .ExecuteTransfer': function(){
+        let address = $('.fundAddress')[0].value;
+        changeOwnerAddress(address);
+    },
+    'click .btnDelete': function() {
+        let address = $('.fundAddress')[0].value;
+        forgetMe(address);
     }
 });
 
@@ -68,8 +93,11 @@ Template.createPension.helpers({
 Template.managePension.helpers({
     fundFound: function () {
         return Session.get("fundFound");
+    },
+    currentOwners: function () {
+        return Session.get("currentOwners");
     }
-})
+});
 
 function createFund() {
 
@@ -208,7 +236,6 @@ function getFundFromBlockchain(address, template) {
 
     web3.eth.getBalance(address, function(err,res) {
         TemplateVar.set(template,"fundBalance",res.c[0]/10000+" Ether");
-        console.log(res);
     });
 }
 
@@ -216,4 +243,54 @@ function depositEther(address, value) {
     let fund = getContract(address);
     fund.contribute({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei(value, "ether")}, function (err,res){
         console.log(res)});
+}
+
+function proposeNewOwner(contractAddress, oldAddress,newAddress) {
+let fund = getContract(contractAddress);
+    fund.proposeNewAddress(oldAddress,newAddress, function(err,res){
+        console.log(res);
+    })
+}
+
+function changeOwnerAddress(contractAddress) {
+    let fund = getContract(contractAddress);
+    fund.changeOwnerAddress(function(err,res){
+        console.log(res);
+    });
+}
+
+function proposeWithdraw(contractAddress, withdrawAddress, value) {
+    let fund = getContract(contractAddress);
+    fund.proposeWithdrawFunds(value,withdrawAddress, function(err,res){
+        console.log(res);
+    });
+}
+
+function executeWithdraw(contractAddress) {
+    let fund = getContract(contractAddress);
+    fund.withdraw(function(err,res){
+        console.log(res);
+    })
+}
+
+function forgetMe(contractAddress){
+    let fund = getContract(contractAddress);
+    fund.forgetMe(function(err,res){
+        console.log(res);
+    })
+}
+
+function getCurrentOwners(contractAddress){
+    let fund = getContract(contractAddress);
+    let currentOwners = [];
+
+    fund.numberOfOwners(function(err,res){
+        let number = res;
+        for (let i =0; i< number;i++){
+            fund.ownerAddresses(i,function(err,res){
+               currentOwners.push(res);
+                Session.set("currentOwners",currentOwners);
+            });
+        }
+    });
 }
