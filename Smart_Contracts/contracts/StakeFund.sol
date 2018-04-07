@@ -1,4 +1,4 @@
-[200~pragma solidity ^0.4.21;
+pragma solidity ^0.4.21;
 
 contract StakeFund {
     address[] public ownerAddresses;
@@ -105,4 +105,3 @@ contract StakeFund {
         emit FundDeleted(msg.sender, address(this), block.number);
     }
 }
-
