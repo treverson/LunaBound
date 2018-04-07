@@ -1,43 +1,369 @@
 <template name="createPension">
     <div class="text-center">
-        <h2 id="create" class="title">Create Pension</h2>
+        <h2 id="create" class="title">Create Staking Contract</h2>
         <h5 class="description">
-            Deploy a new pension contract to the Etheruem blockchain.
-        </h5>
+            Deploy a new fund contract to the Etheruem blockchain.
+            <h4>
+                <strong>Recovery Addresses</strong>
+                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                        data-target="#example">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+            </h4>
+            <br>
 
-    </div>
-</template>
+            <div class="row">
+                <div class="col-lg-8 col-md-6 ">
+                                                    <span class="bmd-form-group"><div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="material-icons">search</i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" value="" name="recoveryAddress"
+                                                               placeholder="Recovery Address" id="fundAddress"
+                                                               class="form-control recoveryAddress">
+                                                    </div></span>
+                </div>
+                <div class="col-lg-4 col-md-6 ">
+                    <button type="button" class="addAddress btn btn-round btn-block Search btn-primary">Add</button>
+                </div>
+            </div>
 
-<template name="fundPension">
-    <div class="text-center">
-        <h2 id="fund" class="title">Fund Pension</h2>
-        <h5 class="description">
-            Add Ether to an existing pension fund.
+
+            <table class="table">
+                <tr>
+                    <th>Recover Address:</th>
+                    <th></th>
+                </tr>
+                {{#each recoverer in recoveryAddresses}}
+                    <tr>
+                        <td>{{recoverer}}</td>
+                        <button type="button" name="{{recoverer}}" id="{{recoverer}}"
+                                class=" fa-pull-right pull-right btn btn-primary btn-outline-danger btn-just-icon removeAddress">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </tr>
+                {{/each}}
+            </table>
+
+            <hr class="wow fadeIn">
+
+            <h4>
+                <strong>Transfer threshold and starting balance</strong>
+                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                        data-target="#example">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+            </h4>
+            <div class="row">
+                <div class="col-6">
+                    Recovery and transfer threshold <input type="number" id="startingBlock" class="form-control"
+                                                           name="startingBlock"
+                                                           value="3"
+                                                           min="1">
+                </div>
+                <div class="col-6 pull-right">
+                    Initial Fund amount <input type="number" id="endingBlock" class="form-control" name="EndingBlock"
+                                               value="5"
+                                               min="0">
+                </div>
+            </div>
+            <hr class="wow fadeIn">
+            <div class="text-center">
+                <button type="button" class=" btn btn-lg hvr-growfast btn-primary createFund">Create Fund</button>
+            </div>
         </h5>
     </div>
 </template>
 
 <template name="managePension">
     <div class="text-center">
-        <h2 id="manage" class="title">Manage Pensions</h2>
+        <h2 id="manage" class="title">Manage Fund</h2>
         <h5 class="description">
-            View current pension funds and manager them, approving or denying participant transactions.
-        </h5>
-    </div>
-</template>
+            View a current fund to execute withdraw, recovery and contributions.
 
-<template name="recoverPension">
-    <div class="text-center">
-        <h2 id="recover" class="title">Recover Pension</h2>
-        <h5 class="description">
-            Recover access to a lost pension fund.
+
+            <div class="row">
+                <div class="col-lg-8 col-md-6 ">
+                                                    <span class="bmd-form-group"><div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="material-icons">search</i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" value="" id="fundAddress"
+                                                               placeholder="Fund Address"
+                                                               class="form-control">
+                                                    </div></span>
+                </div>
+                <div class="col-lg-4 col-md-6 ">
+                    <button type="button" class="btn btn-round btn-block btn-primary btnSearch">Search</button>
+                </div>
+            </div>
+
+            <h3>
+                <strong>Key Fund Infomation</strong>
+                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                        data-target="#example">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+            </h3>
+            <br>
+
+            <table class="table">
+
+                <tr>
+                    <td>Current Fund value</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>Number of owner addresses</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>Transfer threshold</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>Currently Staking</td>
+                    <td>True</td>
+                </tr>
+            </table>
+            <hr>
+            <h3>
+                <strong>Fund Progress</strong>
+                <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                        data-target="#example">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+            </h3>
+            <br>
+            <div class="row">
+                <div class="col-4">
+                    <strong>Staking Started:</strong> 2017-03-1
+                </div>
+                <div class="col-4">
+                    <strong>Time Completed:</strong> 36/60 Days
+                </div>
+                <div class="col-4">
+                    <strong>Staking ends:</strong> 2017-05-01
+                </div>
+            </div>
+
+
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+
+            <hr>
+
+
+            <br>
+
+            <div class="col">
+                <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active show" href="#fund" role="tab" data-toggle="tab" aria-selected="true">
+                            <i class="material-icons">account_balance_wallet</i> Fund
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#withdraw" role="tab" data-toggle="tab" aria-selected="false">
+                            <i class="material-icons">call_made</i> Withdraw
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recover" role="tab" data-toggle="tab" aria-selected="false">
+                            <i class="material-icons">lock_open</i> Recover
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content tab-space">
+                    <!--FUND-->
+                    <div class="tab-pane active show" id="fund">
+                        <h3><strong>Deposit money into an existing fund</strong>
+                            <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                                    data-target="#example">
+                                <i class="fa fa-question" aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <br>
+
+                        <div class="text-justify">
+                            Specify a deposit address and amount. This enables an owner to add more money into an
+                            existing fund. Anyone can contribute to the fund.
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">credit_card</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="button" class=" btn btn-lg hvr-growfast btn-primary deposit">Deposit</button>
+                        </div>
+
+                    </div>
+
+                    <!--WITHDRAW-->
+                    <div class="tab-pane" id="withdraw">
+                        <h3><strong>Withdraw from fund</strong>
+                            <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                                    data-target="#example">
+                                <i class="fa fa-question" aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <br>
+
+                        <div class="text-justify">
+                            This requires a multisig approval of the withdraw from all owners in the fund. Any owner can
+                            propose a new transfer but the transfer only executes once more than the threshold agree on
+                            the withdraw.
+                        </div>
+                        <div class="text-justify">
+                            <strong>Specify proposed withdraw amount and address:</strong>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">credit_card</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="button" class=" btn btn-lg hvr-growfast btn-primary proposeWithdraw">Propose
+                                Withdraw
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="text-justify">
+                            <strong>Execute Transaction.</strong> Note that this will only execute if enough owners have
+                            proposed the fund transfer to the same recipient address with the same withdraw value.
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" class=" btn btn-lg hvr-growfast btn-primary executeWithdraw">Execute
+                                Withdraw
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!--RECOVER-->
+                    <div class="tab-pane" id="recover">
+                        <h3><strong>Recover access to a lost fund</strong>
+                            <button class="pull-right btn btn-just-icon btn-border btn-tumblr" data-toggle="modal"
+                                    data-target="#example">
+                                <i class="fa fa-question" aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <br>
+
+                        <div class="text-justify">
+                            This enables you to swap one of the multisig addresses with a new address. Note that the old
+                            address must be a current multisig member and the new address must be valid.
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                                    </div>
+
+                                    <select class="form-control" name="recoveryAddresses" id="recoveryAddresses">
+                                        <option selected="selected">Current Owner Address</option>
+                                            <!--{{#each template in savedCandidates}}-->
+                                        <!--<option value="{{template._id}}">{{template.name}}</option>-->
+                                        <option value="0x1">0x1</option>
+                                        <option value="0x2">0x2</option>
+                                            <!--{{/each}}-->
+                                    </select>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="New Address">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="button" class=" btn btn-lg hvr-growfast btn-primary proposeTransfer">Propose
+                                Transfer
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="text-justify">
+                            <strong>Execute owner Transfer.</strong> Note that this will only execute if enough owners
+                            have proposed the owner transfer to the same new address.
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" class=" btn btn-lg hvr-growfast btn-primary ExecuteTransfer">Execute
+                                Transfer
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </h5>
     </div>
 </template>
 
 <!--modals-->
 <template name="modal">
-    <div class="modal fade" id="mvpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!--example modal-->
+    <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -69,6 +395,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 

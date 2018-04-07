@@ -764,3 +764,13 @@ nav li.active {
 .icon-tumblr {
     color: #35465c;
 }
+
+#myProgress {
+    width: 100%;
+    background-color: #EBD3EF;
+}
+#myBar {
+    width: 20%;
+    height: 30px;
+    background-color: #9C27B0;
+}
