@@ -64,8 +64,6 @@ def deploy_contract(interface, gas=4100000, arguments=None):
     return (contract_instance, contract_address)
 
 
-#global stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address
-
 
 def deployStakeSimulator():
     with open('StakeSimulator.sol', 'r') as myfile:
@@ -82,7 +80,6 @@ possible_commands = ['deploy','print','list','add','remove','stop','start''drop'
 command_completer = WordCompleter(possible_commands)
 
 history = InMemoryHistory()
-# global stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer
 
 # Drop object to be passed to the timer.
 def air_drop(contract):
@@ -141,8 +138,7 @@ class StakingSimulator():
     def period(self):
         period = self.params
         self.dropTimer = RepeatedTimer(period, air_drop, self.stakeSimulator_contract)
-        # self.dropTimer = RepeatedTimer(period, air_drop(), args=(self.stakeSimulator_contract))
-
+       
     def stop(self):
         self.dropTimer.stop()
 
@@ -174,53 +170,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# while 1:
-#     userInput = prompt('> ',
-#                        completer=command_completer,
-#                        history=history,
-#                        auto_suggest=AutoSuggestFromHistory()
-#                        )
-#     if 'deploy' in userInput:
-#         recipientCounter = 0
-#         (stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address) = deployStakeSimulator()
-
-#     if 'print' in  userInput:
-#         if stakeSimulator_address == '':
-#             print('No contract deployed.')
-#         else:
-#             print(stakeSimulator_address)
-
-#     if 'add' in userInput:
-#         address = userInput[37:]
-#         recipientCounter = recipientCounter + 1
-#         stakeSimulator_contract.addRecipient(address, transact={'from':web3.eth.coinbase})
-
-#     if 'remove' in userInput:
-#         recipientCounter = recipientCounter - 1
-#         address = userInput[39:]
-#         stakeSimulator_contract.removeRecipient(address, transact={'from':web3.eth.coinbase})
-
-#     if 'list' in userInput:
-#         for i in range(recipientCounter):
-#             print(stakeSimulator_contract.recipients(i))
-
-#     if 'drop' in userInput:
-#         drop(stakeSimulator_contract)
-
-#     if 'period' in userInput:
-#         period = userInput[38:]
-#         dropTimer = RepeatedTimer(period, drop(), args=(stakeSimulator_contract))
-
-#     if 'stop' in userInput:
-#         dropTimer.stop()
-
-#     if 'start' in userInput:
-#         dropTimer.start()
-
-#     if 'auto' in userInput:
-#         (stakeSimulator_interface, stakeSimulator_contract, stakeSimulator_address, dropTimer, recipientCounter) = auto_configure(5)
-
-
-
-
