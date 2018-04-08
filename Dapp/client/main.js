@@ -146,12 +146,14 @@ function createFund() {
 }
 
 Meteor.setInterval(checkWeb3Status, 1000);
-
+let errorShown = false;
 //Functions
 function checkWeb3Status() {
     if (!web3.isConnected()) {
-        console.log("no web3");
-        sAlert.error("You don't have a web3 client");
+        if(!errorShown){
+            errorShown = true;
+            $('#noWeb3').modal();
+        }
     } else {
         let network;
         web3.version.getNetwork((error, result) => {
