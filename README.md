@@ -16,8 +16,11 @@ Currently it works both on local simulations and on Ropsten. You can find an exa
 ## Product Description
 
 ![Introduction](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide1.png "Introduction")
-![Returns](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide2.png "Returns")
-![Proof of Stake](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide3.png "Proof of Stake")
-![Challenge](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide4.png "Challenge")
-![Solution](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide5.png "Solution")
+![Challenge](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide2.png "Challenge")
+![Solution](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide3.png "Solution")
+![Proof of Stake](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide4.png "Proof of Stake")
+![Returns](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide5.png "Returns")
 ![StakeFund](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide6.png "StakeFund")
+![Screenshot1](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide7.png "Screenshot1")
+![Screenshot2](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide8.png "Screenshot2")
+![Screenshot3](https://github.com/Blockchaingers/LunaBound/blob/master/img/slide9.png "Screenshot3")
