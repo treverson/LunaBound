@@ -3,3 +3,4 @@ package.*
 package-*
 .idea
 package-lock.json
+*.gz
