@@ -250,7 +250,7 @@ function proposeNewOwner(contractAddress, oldAddress,newAddress) {
 let fund = getContract(contractAddress);
     fund.proposeNewAddress(oldAddress,newAddress, function(err,res){
         console.log(res);
-    })
+    });
     sAlert.info('New owner proposed');
 }
 
@@ -274,7 +274,7 @@ function executeWithdraw(contractAddress) {
     let fund = getContract(contractAddress);
     fund.withdraw(function(err,res){
         console.log(res);
-    })
+    });
     sAlert.info('Withdraw executed');
 }
 
@@ -282,7 +282,7 @@ function forgetMe(contractAddress){
     let fund = getContract(contractAddress);
     fund.forgetMe(function(err,res){
         console.log(res);
-    })
+    });
     sAlert.info('Contract deleted');
 }
 
