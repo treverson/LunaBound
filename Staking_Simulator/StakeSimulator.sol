@@ -44,7 +44,7 @@ library SafeMath {
 
 contract StakeSimulator {
     using SafeMath for uint256;
-    uint256 public scalingFactor = 10;
+    uint256 public scalingFactor = 1;
     address[] public recipients;
     
     function StakeSimulator() public payable{}

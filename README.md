@@ -1,5 +1,7 @@
 # LunaBound [![BCH compliance](https://bettercodehub.com/edge/badge/Blockchaingers/LunaBound?branch=master)](https://bettercodehub.com/)
 
+Lunabound achieved 2nd place in the Future of Pensions category at the Blockchaingers Hackathon!
+
 ## Repository Structure
 
 You can find each part of our solution in a separate directory:
